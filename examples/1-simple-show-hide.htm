@@ -2,25 +2,25 @@
 <head>
 
 <script src="./jquery.js"></script>
+<script src="./jquery.cookie.js"></script>
 <script src="../conductrics.jquery.js"></script>
 <link rel="stylesheet" type="text/css" href="./style.css">
 
 <script type="text/javascript">
 	// Initialize plugin
-	$.conductrics({
-		owner: 'nate',
-		apiKey: '123',
-		agent:'jquery-example-1'
-	})
+    var conductricsAPI = conductrics({
+        apiKey: "123",
+        owner: "nate",
+        agent:'jquery-example-1',
+        });
 
 	$(document).ready(function() {
 
 		// Have Conductrics either show or hide something
-		$('.demo-option-a').conductrics('toggle')
-
+        $('.demo-option-a').conductrics('toggle', {conductrics_api: conductricsAPI});
 		// Send a reward to Conductrics when success is achieved
 		$('.demo-goal').click(function() {
-			$.conductrics('send-goal')
+            conductricsAPI.sendGoal();
 		})
 
 	})

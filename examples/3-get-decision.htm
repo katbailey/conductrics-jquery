@@ -7,16 +7,16 @@
 
 <script type="text/javascript">
 	// Initialize plugin
-	$.conductrics({
-		owner: 'nate',
-		apiKey: '123',
-		agent:'jquery-example-3'
-	})
+    var conductricsAPI = conductrics({
+        apiKey: "123",
+        owner: "nate",
+        agent:'jquery-example-1',
+    });
 
 	$(document).ready(function() {
 
 		// Get a decision from Conductrics
-		$.conductrics('get-decision', {choices:['a','b']}, function(selection) {
+		conductricsAPI.getDecision({choices:['a','b']}, function(selection) {
 			console.log(selection.code)
 
 			switch (selection.code) {
@@ -31,7 +31,7 @@
 
 		// Send a reward to Conductrics when success is achieved
 		$('.demo-goal').click(function() {
-			$.conductrics('send-goal')
+            conductricsAPI.sendGoal();
 		})
 
 	})

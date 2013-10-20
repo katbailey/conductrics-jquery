@@ -9,18 +9,19 @@
 	$(document).ready(function() {
 
 		// Initialize plugin
-		$.conductrics({
-			owner: 'nate',
-			apiKey: '123'
-		})
+        var conductricsAPI = conductrics({
+            apiKey: "123",
+            owner: "nate",
+            agent:'jquery-example-1',
+        });
 
 		// Have Conductrics either show or hide something
-		$('.demo-option-a').conductrics('toggle', {agent:'jquery-example-2-a'})
-		$('.demo-option-a').conductrics('toggle', {agent:'jquery-example-2-b'})
+		$('.demo-option-a').conductrics('toggle', {agent:'jquery-example-2-a', conductrics_api: conductricsAPI})
+		$('.demo-option-a').conductrics('toggle', {agent:'jquery-example-2-b', conductrics_api: conductricsAPI})
 
 		// Send a reward to Conductrics when success is achieved
 		$('.demo-goal').click(function() {
-			$.conductrics('send-goal')
+            conductricsAPI.sendGoal();
 		})
 
 	})

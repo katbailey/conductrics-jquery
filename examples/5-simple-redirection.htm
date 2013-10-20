@@ -6,15 +6,15 @@
 <link rel="stylesheet" type="text/css" href="./style.css">
 
 <script type="text/javascript">
-	// Initialize plugin
-	$.conductrics({
-		owner: 'nate',
-		apiKey: 'UKICgZRAnfTwnePY',
-		agent:'jquery-example-5'
-	})
+	// Initialize Conductrics
+    var conductricsAPI = conductrics({
+        apiKey: "123",
+        owner: "nate",
+        agent:'jquery-example-1',
+    });
 
 	$(document).ready(function() {
-		$.conductrics('redirect-to-best-url', ['http://nytimes.com', 'http://huffpost.com'] )
+		$(document).conductrics('redirect-to-best-url', ['http://nytimes.com', 'http://huffpost.com'], {conductrics_api: conductricsAPI})
 	})
 </script>
 
